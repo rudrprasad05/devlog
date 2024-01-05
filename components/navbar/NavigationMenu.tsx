@@ -27,7 +27,6 @@ import { buttonVariants } from "../ui/button";
 
 export function NavigationMenuDemo() {
   const user = useSession();
-  console.log(user.data?.user);
 
   return (
     <NavigationMenu className="">
@@ -53,7 +52,7 @@ export function NavigationMenuDemo() {
             <NavigationMenuContent>
               <ul className="flex flex-col gap-3 p-6 w-[500px]">
                 <Link
-                  href={"/admin/dashboard"}
+                  href={"/admin"}
                   className={
                     " flex items-center gap-5 select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                   }

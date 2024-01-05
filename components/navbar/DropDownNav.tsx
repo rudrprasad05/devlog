@@ -11,7 +11,7 @@ const DropDownNav = () => {
     <nav className="z-50 w-screen bg-card">
       <main className="hidden md:flex z-50 items-center justify-between h-[15vh]  mx-auto w-4/5">
         <div className="">
-          <Image src={"/logo.png"} alt="MC Tech" height={50} width={50} />
+          <Image src={"/logo.png"} alt="MC Tech" height={30} width={30} />
         </div>
         <div className="flex gap-10">
           <NavigationMenuDemo />
