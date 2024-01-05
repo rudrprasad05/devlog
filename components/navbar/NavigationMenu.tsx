@@ -13,7 +13,6 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { CartContext } from "@/context/CartContext";
 import { useSession } from "next-auth/react";
 import { AiOutlineShop } from "react-icons/ai";
 import { FaSpinner } from "react-icons/fa";
@@ -23,13 +22,11 @@ import {
   MdOutlineLabel,
   MdOutlineShoppingCart,
 } from "react-icons/md";
-import CartSheet from "../CartSheet";
 import { Badge } from "../ui/badge";
 import { buttonVariants } from "../ui/button";
 
 export function NavigationMenuDemo() {
   const user = useSession();
-  const { cartCount } = React.useContext(CartContext);
 
   return (
     <NavigationMenu className="">
@@ -113,23 +110,6 @@ export function NavigationMenuDemo() {
             </NavigationMenuContent>
           </NavigationMenuItem>
         )}
-
-        <CartSheet>
-          <NavigationMenuItem className="relative">
-            <NavigationMenuLink className={buttonVariants({ variant: "link" })}>
-              <MdOutlineShoppingCart
-                className={"h-8 w-8 fill-card-foreground"}
-              />
-              {cartCount || cartCount == 0 ? (
-                <Badge className="text-muted absolute top-0 right-0 bg-card-foreground w-6 h-6 text-center flex items-center justify-center">
-                  {cartCount}
-                </Badge>
-              ) : (
-                <FaSpinner className={"animate-spin"} />
-              )}
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        </CartSheet>
       </NavigationMenuList>
     </NavigationMenu>
   );

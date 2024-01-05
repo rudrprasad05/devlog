@@ -5,7 +5,6 @@ import AuthForm from "./AuthForm";
 const page = () => {
   return (
     <div>
-      <DropDownNav />
       <AuthForm />
     </div>
   );
