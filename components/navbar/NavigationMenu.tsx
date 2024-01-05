@@ -27,6 +27,7 @@ import { buttonVariants } from "../ui/button";
 
 export function NavigationMenuDemo() {
   const user = useSession();
+  console.log(user.data?.user);
 
   return (
     <NavigationMenu className="">

@@ -12,7 +12,7 @@ import {
 import { User } from "@prisma/client";
 
 import React, { useContext } from "react";
-// import ThemeSwitcher from "../ThemeSwitcher";
+import ThemeSwitcher from "../ThemeSwitcher";
 import { signOut } from "next-auth/react";
 import { Button } from "../ui/button";
 
@@ -37,7 +37,7 @@ const EditProfileSheet: React.FC<props> = ({ children, user }) => {
         </SheetHeader>
         <SheetFooter className="absolute bottom-0 left-0 p-8 w-full">
           <div className="flex justify-between w-full">
-            {/* <ThemeSwitcher /> */}
+            <ThemeSwitcher />
             <Button onClick={() => handleClick()}>Signout</Button>
           </div>
         </SheetFooter>
