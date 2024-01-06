@@ -5,10 +5,10 @@ import SidebarBtnElement from "./SidebarBtnElement";
 
 function FormElementsSidebar() {
   return (
-    <div>
+    <div className="">
       <p className="text-sm text-foreground/70">Drag and drop elements</p>
       <Separator className="my-2" />
-      <div className="grid grid-cols-1 md:grid-cols-1 gap-2 place-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-1 gap-2 place-items-center overflow-y-auto h-[550px]">
         <p className="text-sm text-muted-foreground col-span-1 md:col-span-2 my-2 place-self-start">
           Layout elements
         </p>
@@ -19,6 +19,10 @@ function FormElementsSidebar() {
         <SidebarBtnElement formElement={FormElements.SpacerField} />
         <SidebarBtnElement formElement={FormElements.ImageField} />
         <SidebarBtnElement formElement={FormElements.CardField} />
+        <SidebarBtnElement formElement={FormElements.GridLayout} />
+        <SidebarBtnElement formElement={FormElements.GridLayout} />
+        <SidebarBtnElement formElement={FormElements.GridLayout} />
+        <SidebarBtnElement formElement={FormElements.GridLayout} />
         <SidebarBtnElement formElement={FormElements.GridLayout} />
 
         {/* <p className="text-sm text-muted-foreground col-span-1 md:col-span-2 my-2 place-self-start">Form elements</p>

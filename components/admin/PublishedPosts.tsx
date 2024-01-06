@@ -10,9 +10,11 @@ interface props {
   posts: PostType[];
 }
 
-const DraftPosts: React.FC<props> = ({ posts }) => {
+const PublishedPosts: React.FC<props> = ({ posts }) => {
   if (posts.length == 0) {
-    return <div className="italic text-muted-foreground">No Drafts</div>;
+    return (
+      <div className="italic text-muted-foreground">No Published Posts</div>
+    );
   }
   return (
     <>
@@ -45,4 +47,4 @@ const DraftPosts: React.FC<props> = ({ posts }) => {
   );
 };
 
-export default DraftPosts;
+export default PublishedPosts;

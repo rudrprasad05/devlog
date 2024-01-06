@@ -129,7 +129,7 @@ function Designer() {
   });
 
   return (
-    <div className="relative flex w-full h-full py-8">
+    <div className="relative flex w-full min-h-screen py-8">
       <div
         className="w-3/4"
         onClick={() => {

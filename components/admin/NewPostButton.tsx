@@ -99,6 +99,7 @@ const NewPostButton: React.FC<props> = ({ category }) => {
 
   function onSubmit(data: NewPostType) {
     data.imageUrl = `https://mctechfiji.s3.amazonaws.com/devlog/${file?.name}`;
+    data.authorId = session.data?.user.id;
     console.log(data);
     axios
       .post(`/api/post`, data)
@@ -119,7 +120,7 @@ const NewPostButton: React.FC<props> = ({ category }) => {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <div className="duration-100 group group-hover:border-primary border rounded-md shadow-sm h-48 relative bg-card p-5 border-primary/20 hover:border-primary hover:cursor-pointer">
-          <div className="font-light text-2xl text-primary">Product</div>
+          <div className="font-light text-2xl text-primary">Post</div>
           <div className="absolute bottom-5 right-5">
             <MdHeadset className="group-hover:h-28 group-hover:w-28 group-hover:fill-muted-foreground/20 duration-200  w-16 h-16 stroke fill-muted-foreground" />
             {/* <IoPersonAddOutline className="group-hover:stroke-primary w-16 h-16 stroke stroke-muted-foreground" /> */}
@@ -129,7 +130,7 @@ const NewPostButton: React.FC<props> = ({ category }) => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>New Product</DialogTitle>
+          <DialogTitle>New Post</DialogTitle>
           <DialogDescription>Create New Product</DialogDescription>
         </DialogHeader>
 

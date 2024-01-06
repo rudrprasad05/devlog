@@ -1,4 +1,4 @@
-import { UpdateSiteContent } from "@/actions/site";
+import { UpdateSiteContent } from "@/actions/post";
 import React, { useTransition } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { HiSaveAs } from "react-icons/hi";

@@ -38,10 +38,8 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link href="/products" legacyBehavior passHref>
-            <NavigationMenuLink className="text-sm">
-              Products
-            </NavigationMenuLink>
+          <Link href="/posts" legacyBehavior passHref>
+            <NavigationMenuLink className="text-sm">Posts</NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
 

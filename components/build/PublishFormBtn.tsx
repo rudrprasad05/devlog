@@ -1,8 +1,7 @@
-import { PublishSite } from "@/actions/site";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { FaSpinner } from "react-icons/fa";
-import { MdOutlinePublish } from "react-icons/md";
+import { MdClear, MdOutlinePublish } from "react-icons/md";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,6 +15,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
+import { PublishSite, UnPublishSite } from "@/actions/post";
 
 function PublishFormBtn({ id }: { id: string }) {
   const [loading, startTransition] = useTransition();
@@ -52,6 +52,61 @@ function PublishFormBtn({ id }: { id: string }) {
             This action cannot be undone. After publishing you will not be able
             to edit this form. <br />
             <br />
+            <span className="font-medium">
+              By publishing this form you will make it available to the public
+              and you will be able to collect submissions.
+            </span>
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction
+            disabled={loading}
+            onClick={(e) => {
+              e.preventDefault();
+              startTransition(publishForm);
+            }}
+          >
+            Proceed {loading && <FaSpinner className="animate-spin" />}
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+}
+
+export function UnPublishFormBtn({ id }: { id: string }) {
+  const [loading, startTransition] = useTransition();
+  const router = useRouter();
+
+  async function publishForm() {
+    try {
+      await UnPublishSite(id);
+      toast({
+        title: "Success",
+        description: "Your post is now a draft",
+      });
+      router.refresh();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong",
+      });
+    }
+  }
+
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button variant={"destructive"} className="gap-2 text-white">
+          <MdClear className="h-4 w-4" />
+          Unpublish
+        </Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription>
             <span className="font-medium">
               By publishing this form you will make it available to the public
               and you will be able to collect submissions.
