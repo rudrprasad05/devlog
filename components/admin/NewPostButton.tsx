@@ -100,7 +100,6 @@ const NewPostButton: React.FC<props> = ({ category }) => {
   function onSubmit(data: NewPostType) {
     data.imageUrl = `https://mctechfiji.s3.amazonaws.com/devlog/${file?.name}`;
     data.authorId = session.data?.user.id;
-    console.log(data);
     axios
       .post(`/api/post`, data)
       .then((res) => {

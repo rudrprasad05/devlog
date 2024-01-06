@@ -11,6 +11,11 @@ export async function GetAllPost() {
     orderBy: {
       createdAt: "asc",
     },
+    include: {
+      comments: true,
+      author: true,
+      category: true,
+    },
   });
 }
 
@@ -84,7 +89,7 @@ export async function CreateSite(data: NewPostType) {
   return Site.id;
 }
 
-export async function GetSiteById(id: string) {
+export async function GetPostById(id: string) {
   // const user = await getCurrentUser();
   // if (!user) {
   //   throw new UserNotFoundErr();
@@ -107,6 +112,8 @@ export async function GetSiteById(id: string) {
     },
     include: {
       author: true,
+      comments: true,
+      likes: true,
     },
   });
 }
@@ -170,16 +177,10 @@ export async function DeleteSite(id: string) {
   });
 }
 
-export async function GetSiteWithSubmissions(id: string) {
-  const user = await getCurrentUser();
-  if (!user) {
-    throw new UserNotFoundErr();
-  }
-
-  return await prisma.post.findUnique({
+export async function GetSimilarPost(cat: string) {
+  return await prisma.post.findMany({
     where: {
-      authorId: user.id,
-      id,
+      categoryId: cat,
     },
   });
 }

@@ -78,7 +78,7 @@ function FormComponent({
   const element = elementInstance as CustomInstance;
 
   const { title } = element.extraAttributes;
-  return <p className="text-xl">{title}</p>;
+  return <h1 className="text-4xl">{title}</h1>;
 }
 
 type propertiesFormSchemaType = z.infer<typeof propertiesSchema>;

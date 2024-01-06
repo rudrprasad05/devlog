@@ -1,35 +1,27 @@
 "use client";
 
+import { Label } from "@/components/ui/label";
+import useDesigner from "@/hooks/useDesigner";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import {
   ElementsType,
   FormElement,
   FormElementInstance,
 } from "../FormElements";
-import { Label } from "@/components/ui/label";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
-import useDesigner from "@/hooks/useDesigner";
 
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { BsImage, BsTextParagraph } from "react-icons/bs";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { MdOutlineCheck } from "react-icons/md";
+import { Form } from "@/components/ui/form";
 import Image from "next/image";
+import { BsImage } from "react-icons/bs";
+import { FaSpinner } from "react-icons/fa";
 
 const type: ElementsType = "ImageField";
 
 const extraAttributes = {
-  text: "No image Selected",
+  text: "https://mctechfiji.s3.amazonaws.com/devlog/NoimageSelected",
 };
 
 const propertiesSchema = z.object({
@@ -68,12 +60,7 @@ function DesignerComponent({
   return (
     <div className="flex gap-2 w-full">
       <Label className="text-muted-foreground">Image field</Label>
-      <Image
-        width={100}
-        height={100}
-        alt={text}
-        src={`https://mctechfiji.s3.amazonaws.com/mctechuploads/${text}`}
-      />
+      <Image width={100} height={100} alt={text} src={`${text}`} />
     </div>
   );
 }
@@ -87,12 +74,15 @@ function FormComponent({
 
   const { text } = element.extraAttributes;
   return (
-    <Image
-      width={100}
-      height={100}
-      alt={text}
-      src={`https://mctechfiji.s3.amazonaws.com/mctechuploads/${text}`}
-    />
+    <div className="relative w-full h-[550px]">
+      <Image
+        fill
+        sizes="(max-width: 768px) 100vw, 700px"
+        className="object-cover"
+        alt={text}
+        src={`${text}`}
+      />
+    </div>
   );
 }
 
@@ -106,6 +96,8 @@ function PropertiesComponent({
   const element = elementInstance as CustomInstance;
   const { updateElement } = useDesigner();
   const [loadingImage, setLoadingImage] = useState(false);
+  const [formReadyToUpload, setFormReadyToUpload] = useState(false);
+
   const [file, setFile] = useState<File>();
 
   const form = useForm<propertiesFormSchemaType>({
@@ -125,7 +117,7 @@ function PropertiesComponent({
     await handleImageUpload().then(
       () =>
         (filename =
-          `https://mctechfiji.s3.amazonaws.com/mctechuploads/${file?.name}` as string)
+          `https://mctechfiji.s3.amazonaws.com/devlog/${file?.name}` as string)
     );
 
     // const { text } = values;
@@ -138,10 +130,8 @@ function PropertiesComponent({
   }
 
   const handleImageUpload = async () => {
-    // setloadingImage(true);
-    console.log("fired", file?.name);
     if (!file) return;
-
+    setLoadingImage(true);
     try {
       const data = new FormData();
       data.set("file", file);
@@ -151,8 +141,8 @@ function PropertiesComponent({
         body: data,
       })
         .then(() => {
-          // setloadingImage(false);
-          // setFormReadyToUpload(true);
+          setLoadingImage(false);
+          setFormReadyToUpload(true);
           // toast.success("Image Uploaded to Cloud");
         })
         .catch((e) => {
@@ -185,14 +175,10 @@ function PropertiesComponent({
             type="button"
             onClick={() => handleImageUpload()}
           >
-            {/* {loadingImage && <FaSpinner className={"animate-spin mr-3"} />} */}
-            {/* {!formReadyToUpload && "Upload"} */}
-            {/* {formReadyToUpload && ( */}
-            <>
-              <MdOutlineCheck className={"mr-3"} />
-              Uploaded
-            </>
-            {/* )} */}
+            {loadingImage && <FaSpinner className={"animate-spin mr-3"} />}
+            {!formReadyToUpload && loadingImage && "Uploading"}
+            {formReadyToUpload && "Uploaded"}
+            {!formReadyToUpload && !loadingImage && "Upload"}
           </Button>
         </div>
       </form>

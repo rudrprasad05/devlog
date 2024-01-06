@@ -1,4 +1,4 @@
-import { GetSiteById } from "@/actions/post";
+import { GetPostById } from "@/actions/post";
 import FormBuilder from "@/components/build/FormBuilder";
 
 async function BuilderPage({
@@ -9,7 +9,7 @@ async function BuilderPage({
   };
 }) {
   const { id } = params;
-  const form = await GetSiteById(id);
+  const form = await GetPostById(id);
 
   if (!form) {
     throw new Error("form not found");

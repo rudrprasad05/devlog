@@ -23,7 +23,7 @@ import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { useRouter } from "next/navigation";
 import { HiMiniArrowLongLeft } from "react-icons/hi2";
 import PublishFormBtn, { UnPublishFormBtn } from "./PublishFormBtn";
-import SaveFormBtn from "./SaveFormBtn";
+import { SaveFormBtn } from "./SaveFormBtn";
 import { PostType } from "@/types";
 
 function FormBuilder({ form }: { form: PostType }) {
