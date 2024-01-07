@@ -3,20 +3,62 @@
 import prisma from "@/lib/prismadb";
 import { getCurrentUser } from "./user";
 import { NewPostForm, NewPostType } from "@/schemas/post";
+import { revalidatePath } from "next/cache";
 
 class UserNotFoundErr extends Error {}
 
-export async function GetAllPost() {
-  return await prisma.post.findMany({
+export async function GetAllPost({
+  take,
+  skip,
+  search,
+}: {
+  take: any;
+  skip: any;
+  search?: string;
+}) {
+  const data = await prisma.post.findMany({
     orderBy: {
       createdAt: "asc",
     },
+    take,
+    skip,
+    where: {
+      OR: [
+        {
+          name: {
+            contains: search,
+            mode: "insensitive",
+          },
+        },
+        {
+          category: {
+            name: {
+              contains: search,
+              mode: "insensitive",
+            },
+          },
+        },
+      ],
+    },
+
     include: {
       comments: true,
       author: true,
       category: true,
     },
   });
+
+  const total = await prisma.post.count();
+
+  revalidatePath("/");
+
+  return {
+    data: data,
+    metadata: {
+      hasNextPage: skip + take < total,
+      totalPages: Math.ceil(total / take),
+    },
+  };
 }
 
 export async function GetSomeDraftPost({
@@ -112,7 +154,11 @@ export async function GetPostById(id: string) {
     },
     include: {
       author: true,
-      comments: true,
+      comments: {
+        include: {
+          user: true,
+        },
+      },
       likes: true,
     },
   });

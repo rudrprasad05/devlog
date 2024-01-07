@@ -10,6 +10,9 @@ import { useSession } from "next-auth/react";
 import { GiSpiderWeb } from "react-icons/gi";
 import { FormElementInstance } from "../build/FormElements";
 import PostSection from "./PostSection";
+import AuthorCard from "./AuthorCard";
+import PostComments from "../comments/PostComments";
+import CommentCard from "../comments/CommentCard";
 
 interface props {
   data: PostType;
@@ -49,26 +52,17 @@ const PostPage: React.FC<props> = ({ data }) => {
       {domLoaded && (
         <main className="">
           <PostSection content={postContent} />
-          <h1 className="py-10 text-2xl">About the Author</h1>
-          <div className="flex justify-between items-center">
-            {/* <AuthorCard user={data.author} /> */}
-            <div className="text-sm italic">
-              {formatDistance(data.createdAt, new Date(), {
-                addSuffix: true,
-              })}
-            </div>
-          </div>
-
+          <AuthorCard post={data} />
           <section>
-            {/* {domLoaded && (
+            {domLoaded && (
               <PostComments
                 disableButtonProps={disableCommentSubmit}
                 data={data}
                 user={user}
               />
-            )} */}
+            )}
 
-            {/* {data.comments?.map((commentData) => {
+            {data.comments?.map((commentData) => {
               if (user?.id == commentData.userId && !commentData.isModerated)
                 return (
                   <CommentCard
@@ -85,7 +79,7 @@ const PostPage: React.FC<props> = ({ data }) => {
                     user={user}
                   />
                 );
-            })} */}
+            })}
           </section>
 
           {data.comments.length < 1 && (
