@@ -9,4 +9,6 @@ export type PostType = Post & {
   likes: Likes;
 };
 
+export type OnlyPostType = Post;
+
 export type CategoryType = Category;

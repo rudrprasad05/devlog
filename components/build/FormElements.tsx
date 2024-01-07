@@ -1,5 +1,6 @@
 import { CheckboxFieldFormElement } from "@/components/build/fields/CheckboxField";
 import { DateFieldFormElement } from "@/components/build/fields/DateField";
+import { ImageFieldFormElement } from "@/components/build/fields/ImageField";
 import { NumberFieldFormElement } from "@/components/build/fields/NumberField";
 import { ParagprahFieldFormElement } from "@/components/build/fields/ParagraphField";
 import { SelectFieldFormElement } from "@/components/build/fields/SelectField";
@@ -9,7 +10,8 @@ import { SubTitleFieldFormElement } from "@/components/build/fields/SubTitleFiel
 import { TextAreaFormElement } from "@/components/build/fields/TextAreaField";
 import { TextFieldFormElement } from "@/components/build/fields/TextField";
 import { TitleFieldFormElement } from "@/components/build/fields/TitleField";
-import { ImageFieldFormElement } from "@/components/build/fields/ImageField";
+
+import { CaptionFieldFormElement } from "./fields/CaptionField";
 import { CardFieldFormElement } from "./fields/CardField";
 import { GridLayoutFormElement } from "./fields/GridLayout";
 
@@ -27,7 +29,8 @@ export type ElementsType =
   | "CheckboxField"
   | "ImageField"
   | "CardField"
-  | "GridLayout";
+  | "GridLayout"
+  | "CaptionField";
 
 export type SubmitFunction = (key: string, value: string) => void;
 
@@ -81,4 +84,5 @@ export const FormElements: FormElementsType = {
   ImageField: ImageFieldFormElement,
   CardField: CardFieldFormElement,
   GridLayout: GridLayoutFormElement,
+  CaptionField: CaptionFieldFormElement
 };

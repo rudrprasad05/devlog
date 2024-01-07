@@ -1,6 +1,7 @@
-import React from "react";
-import { FormElements } from "./FormElements";
 import { Separator } from "@/components/ui/separator";
+import React from "react";
+
+import { FormElements } from "./FormElements";
 import SidebarBtnElement from "./SidebarBtnElement";
 
 function FormElementsSidebar() {
@@ -20,10 +21,7 @@ function FormElementsSidebar() {
         <SidebarBtnElement formElement={FormElements.ImageField} />
         <SidebarBtnElement formElement={FormElements.CardField} />
         <SidebarBtnElement formElement={FormElements.GridLayout} />
-        <SidebarBtnElement formElement={FormElements.GridLayout} />
-        <SidebarBtnElement formElement={FormElements.GridLayout} />
-        <SidebarBtnElement formElement={FormElements.GridLayout} />
-        <SidebarBtnElement formElement={FormElements.GridLayout} />
+        <SidebarBtnElement formElement={FormElements.CaptionField} />
 
         {/* <p className="text-sm text-muted-foreground col-span-1 md:col-span-2 my-2 place-self-start">Form elements</p>
         <SidebarBtnElement formElement={FormElements.TextField} />

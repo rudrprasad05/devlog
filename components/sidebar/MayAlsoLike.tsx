@@ -1,7 +1,7 @@
-import { CategoryType, PostType } from "@/types";
+import { CategoryType, OnlyPostType, PostType } from "@/types";
 import React from "react";
 
-const MayAlsoLike = ({ posts }: { posts: PostType[] }) => {
+const MayAlsoLike = ({ posts }: { posts: OnlyPostType[] }) => {
   if (posts.length <= 0) return null;
   return (
     <div>
