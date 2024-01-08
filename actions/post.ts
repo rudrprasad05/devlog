@@ -18,11 +18,12 @@ export async function GetAllPost({
 }) {
   const data = await prisma.post.findMany({
     orderBy: {
-      createdAt: "asc",
+      createdAt: "desc",
     },
     take,
     skip,
     where: {
+      published: true,
       OR: [
         {
           name: {
@@ -45,6 +46,7 @@ export async function GetAllPost({
       comments: true,
       author: true,
       category: true,
+      likes: true,
     },
   });
 

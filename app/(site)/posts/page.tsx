@@ -1,3 +1,4 @@
+import { GetAllCategory } from "@/actions/category";
 import { GetAllPost } from "@/actions/post";
 import AllPosts from "@/components/posts/AllPosts";
 import { PostType } from "@/types";
@@ -18,11 +19,12 @@ async function page(props: PageProps) {
   const skip = (pageNumber - 1) * take;
 
   const { data, metadata } = await GetAllPost({ take, skip, search });
+  const category = await GetAllCategory();
 
   if (!data) return null;
   return (
     <div>
-      <AllPosts posts={data} />
+      <AllPosts posts={data} category={category} />
     </div>
   );
 }
