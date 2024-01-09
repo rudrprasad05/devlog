@@ -1,6 +1,7 @@
 import { GetAllCategory } from "@/actions/category";
 import { GetAllPost } from "@/actions/post";
 import AllPosts from "@/components/posts/AllPosts";
+import { Pagination } from "@/components/posts/Pagination";
 import { PostType } from "@/types";
 import React from "react";
 
@@ -25,6 +26,7 @@ async function page(props: PageProps) {
   return (
     <div>
       <AllPosts posts={data} category={category} />
+      <Pagination {...props.searchParams} {...metadata} />
     </div>
   );
 }
