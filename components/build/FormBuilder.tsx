@@ -25,6 +25,8 @@ import { HiMiniArrowLongLeft } from "react-icons/hi2";
 import PublishFormBtn, { UnPublishFormBtn } from "./PublishFormBtn";
 import { SaveFormBtn } from "./SaveFormBtn";
 import { PostType } from "@/types";
+import { DeleteSite } from "@/actions/post";
+import { MdDeleteOutline } from "react-icons/md";
 
 function FormBuilder({ form }: { form: PostType }) {
   const { setElements, setSelectedElement } = useDesigner();
@@ -87,6 +89,7 @@ function FormBuilder({ form }: { form: PostType }) {
             <PreviewDialogBtn />
             <SaveFormBtn id={form.id} />
             <PublishForm post={form} />
+            <DeleteForm id={form.id} />
           </div>
         </nav>
         <div className="flex w-full flex-grow items-center justify-center relative min-h-screen bg-accent bg-[url(/paper.svg)] dark:bg-[url(/paper-dark.svg)]">
@@ -122,4 +125,18 @@ const PublishForm = ({ post }: { post: PostType }) => {
   if (post.published) return <UnPublishFormBtn id={post.id} />;
   else if (!post.published) return <PublishFormBtn id={post.id} />;
   else return null;
+};
+
+const DeleteForm = ({ id }: { id: string }) => {
+  const router = useRouter();
+  const handleClick = async () => {
+    await DeleteSite(id).then(() => {
+      router.push("/admin");
+    });
+  };
+  return (
+    <Button variant={"destructive"} onClick={() => handleClick()}>
+      <MdDeleteOutline className="h-6 w-6" />
+    </Button>
+  );
 };

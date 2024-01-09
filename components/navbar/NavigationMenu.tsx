@@ -33,13 +33,25 @@ export function NavigationMenuDemo() {
       <NavigationMenuList className="gap-10 text-card-foreground">
         <NavigationMenuItem className="text-card-foreground">
           <Link href="/" legacyBehavior passHref>
-            <NavigationMenuLink className="text-sm">Home</NavigationMenuLink>
+            <NavigationMenuLink className="text-sm underline-offset-4 hover:underline">
+              Home
+            </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
           <Link href="/posts" legacyBehavior passHref>
-            <NavigationMenuLink className="text-sm">Posts</NavigationMenuLink>
+            <NavigationMenuLink className="text-sm underline-offset-4 hover:underline">
+              Posts
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <Link href="/posts/readme" legacyBehavior passHref>
+            <NavigationMenuLink className="text-sm underline-offset-4 hover:underline">
+              About
+            </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
 

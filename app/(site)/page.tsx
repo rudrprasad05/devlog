@@ -10,11 +10,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { PostType } from "@/types";
-import { Badge, Link } from "lucide-react";
+import { Badge } from "lucide-react";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { MdCalendarToday } from "react-icons/md";
+import { ReadMeMd } from "@/components/site/ReadMeMd";
+import FindMeSocial from "@/components/site/FindMeSocial";
 
 export default async function Home() {
   const { data } = await GetAllPost({ take: 3, skip: 0, search: "" });
@@ -25,6 +27,13 @@ export default async function Home() {
       <div className="w-4/5 mx-auto py-20">
         <h1 className="py-10 text-3xl">Recent Posts</h1>
         <RecentUploads data={data} />
+      </div>
+      <div className="py-20 w-4/5 mx-auto">
+        <ReadMeMd />
+      </div>
+
+      <div className="py-20 w-4/5 mx-auto">
+        <FindMeSocial />
       </div>
     </>
   );

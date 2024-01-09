@@ -1,4 +1,5 @@
 import DropDownNav from "@/components/navbar/DropDownNav";
+import Footer from "@/components/navbar/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export default function RootLayout({
     <main>
       <DropDownNav />
       <div>{children}</div>
+      <Footer />
     </main>
   );
 }
