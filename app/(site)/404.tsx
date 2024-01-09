@@ -6,7 +6,7 @@ const Custom404 = () => {
   return (
     <div>
       <DropDownNav />
-      <div className="h-[85vh]">404 error</div>
+      <div className="h-[85vh]">404 errors</div>
       <Footer />
     </div>
   );
