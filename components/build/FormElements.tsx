@@ -13,7 +13,6 @@ import { TitleFieldFormElement } from "@/components/build/fields/TitleField";
 
 import { CaptionFieldFormElement } from "./fields/CaptionField";
 import { CardFieldFormElement } from "./fields/CardField";
-import { GridLayoutFormElement } from "./fields/GridLayout";
 
 export type ElementsType =
   | "TextField"
@@ -29,7 +28,6 @@ export type ElementsType =
   | "CheckboxField"
   | "ImageField"
   | "CardField"
-  | "GridLayout"
   | "CaptionField";
 
 export type SubmitFunction = (key: string, value: string) => void;
@@ -83,6 +81,5 @@ export const FormElements: FormElementsType = {
   CheckboxField: CheckboxFieldFormElement,
   ImageField: ImageFieldFormElement,
   CardField: CardFieldFormElement,
-  GridLayout: GridLayoutFormElement,
-  CaptionField: CaptionFieldFormElement
+  CaptionField: CaptionFieldFormElement,
 };
