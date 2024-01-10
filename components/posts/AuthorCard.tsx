@@ -11,7 +11,7 @@ const AuthorCard = ({ post }: { post: PostType }) => {
   return (
     <>
       <h1 className="pt-10 pb-3 text-2xl">Written By</h1>
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col gap-3 md:gap-0 md:flex md:flex-row md:justify-between md:items-center">
         <AuthorCardElement user={post.author} />
         <div className="text-sm italic text-primary">
           {formatDistance(post.createdAt, new Date(), {

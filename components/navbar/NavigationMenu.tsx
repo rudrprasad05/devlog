@@ -48,7 +48,7 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link href="/posts/readme" legacyBehavior passHref>
+          <Link href="/posts/659e316b7ecda7be4880d695" legacyBehavior passHref>
             <NavigationMenuLink className="text-sm underline-offset-4 hover:underline">
               About
             </NavigationMenuLink>

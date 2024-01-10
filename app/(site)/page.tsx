@@ -28,7 +28,7 @@ export default async function Home() {
         <h1 className="py-10 text-3xl">Recent Posts</h1>
         <RecentUploads data={data} />
       </div>
-      <div className="py-20 w-4/5 mx-auto">
+      <div className="py-10 w-4/5 mx-auto">
         <ReadMeMd />
       </div>
 

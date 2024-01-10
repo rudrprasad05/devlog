@@ -61,9 +61,9 @@ const PostComments: React.FC<props> = ({ data, user, disableButtonProps }) => {
     <div>
       <h1 className="py-10 text-2xl">Comments Section</h1>
 
-      <form className="flex gap-10 pb-10">
+      <form className="flex gap-3 md:gap-10 pb-10">
         <Input
-          className={` grow`}
+          className={`grow`}
           value={commentValue}
           onChange={(e) => setCommentValue(e.target.value)}
           type="text"

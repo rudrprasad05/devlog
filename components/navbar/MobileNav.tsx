@@ -31,7 +31,7 @@ const MobileNav: React.FC<props> = ({ children }) => {
       <SheetTrigger>{children}</SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>McTech Computers</SheetTitle>
+          <SheetTitle>DevLog</SheetTitle>
           <SheetDescription className="relative h-full"></SheetDescription>
         </SheetHeader>
         <div>
@@ -42,8 +42,8 @@ const MobileNav: React.FC<props> = ({ children }) => {
               </Link>
             </li>
             <li>
-              <Link href="/products" legacyBehavior passHref>
-                Products
+              <Link href="/posts" legacyBehavior passHref>
+                Posts
               </Link>
             </li>
           </ul>

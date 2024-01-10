@@ -22,7 +22,7 @@ const DropDownNav = () => {
         </div>
       </main>
 
-      <main className="flex items-center justify-between w-4/5 mx-auto pt-10 md:hidden">
+      <main className="flex items-center justify-between w-4/5 mx-auto py-5 md:pt-10 md:hidden">
         <div>McTech</div>
         <div className="flex gap-5">
           <MobileNav>

@@ -74,7 +74,7 @@ function FormComponent({
 
   const { text } = element.extraAttributes;
   return (
-    <div className="relative w-full h-[550px]">
+    <div className="relative w-full h-[220px] md:h-[550px]">
       <Image
         fill
         sizes="(max-width: 768px) 100vw, 700px"

@@ -10,7 +10,7 @@ const Footer = () => {
           <h1 className="text-primary text-2xl">Quick Links</h1>
           <div className="flex flex-col gap-2">
             <Link href={"/posts"}>Posts</Link>
-            <Link href={"/posts/readme"}>About</Link>
+            <Link href={"/posts/659e316b7ecda7be4880d695"}>About</Link>
             <Link href={"#contact"}>Contact</Link>
           </div>
         </div>
@@ -18,8 +18,8 @@ const Footer = () => {
         <div className="flex flex-col gap-5">
           <h1 className="text-primary text-2xl">My Favourites</h1>
           <div className="flex flex-col gap-2">
-            <Link href={"/posts/readme"}>Readme</Link>
-            <Link href={"/posts/readme"}>React</Link>
+            <Link href={"/posts/659e316b7ecda7be4880d695"}>Readme</Link>
+            <Link href={"/posts/659e316b7ecda7be4880d695"}>React</Link>
             <Link href={"/posts/ecommerce"}>Ecommerce</Link>
           </div>
         </div>
