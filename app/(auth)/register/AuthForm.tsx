@@ -54,6 +54,7 @@ const AuthForm = () => {
 
   function onSubmit(data: RegisterFormType) {
     setIsLoading(true);
+    console.log(data);
 
     data.role = "user";
     axios
